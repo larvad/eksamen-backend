@@ -20,7 +20,7 @@ import java.net.URI;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-@Disabled
+
 public class APIResourceTest {
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
@@ -158,7 +158,7 @@ public class APIResourceTest {
     @Test
     public void testAPIResourceIsResponding() {
 
-        given().when().get("/boatstuesday").then().statusCode(200);
+        given().when().get("/apiRes").then().statusCode(200);
     }
 
     @Test
@@ -176,7 +176,7 @@ public class APIResourceTest {
     void welcomeGreeting() {
         given()
                 .contentType("application/json")
-                .when().get("/boatstuesday")
+                .when().get("/apiRes")
                 .then().statusCode(200)
                 .assertThat()
                 .body("msg", equalTo("Hello boatsman"));

@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.UriInfo;
 
-@Path("apires")
+@Path("apiRes")
 @DeclareRoles({"user", "admin"})
 public class APIResource {
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
