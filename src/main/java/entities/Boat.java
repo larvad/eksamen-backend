@@ -1,51 +1,58 @@
 package entities;
 
 import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "boat")
 public class Boat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "boat_id", nullable = true)
-    private Long id;
-//    private String brand;
-//    private String model;
-//    private String name;
-//    private String image;
-//
-//
-//
-//    @ManyToMany(mappedBy = "boats")
-//    private Set<Owner> owners = new HashSet<>();
-//    @ManyToOne //(cascade = { CascadeType.PERSIST, CascadeType.MERGE}) //owning side
-//    private Harbour harbour;
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
-    public Boat() {
+    @Column(name = "brand", nullable = false)
+    private String brand;
+
+    @Column(name = "make", nullable = false)
+    private String make;
+
+    @Column(name = "image", nullable = false)
+    private String image;
+
+    @ManyToMany
+    @JoinTable(name = "link_owner_boat",
+            joinColumns = @JoinColumn(name = "boat_id"),
+            inverseJoinColumns = @JoinColumn(name = "owner_id"))
+    private Set<Owner> owners = new LinkedHashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "habour_id", nullable = false)
+    private Harbour harbour;
+
+    public Integer getId() {
+        return id;
     }
 
-//    public Boat(BoatDTO boatDTO) {
-//        if(boatDTO.getId() != null){
-//            this.id = boatDTO.getId();
-//        }
-//        this.brand = boatDTO.getBrand();
-//        this.model = boatDTO.getModel();
-//        this.name = boatDTO.getName();
-//        this.image = boatDTO.getImage();
-//        this.harbour = new Harbour(boatDTO.getHarbour().getId(),
-//                boatDTO.getHarbour().getName(),
-//                boatDTO.getHarbour().getAddress(),
-//                boatDTO.getHarbour().getCapacity());
-////        Ifølge domænediagram må owners ikke være tom, men...
-//        if(boatDTO.getOwners() != null) {
-//            boatDTO.getOwners().forEach(ownerDTO -> {
-//                this.addOwner(new Owner(ownerDTO.getName(), ownerDTO.getAddress(), ownerDTO.getPhone()));
-//
-//            });
-//        }
-//    }
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public String getImage() {
+        return image;
+    }
 
 
+    public Harbour getHarbour() {
+        return harbour;
+    }
 
-
+    public Set<Owner> getOwners() {
+        return owners;
+    }
 }
