@@ -37,7 +37,7 @@ public class APIResource {
         return "{\"msg\":\"Hello boatsman\"}";
     }
 
-//    @GET
+    //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Path("owner")
 ////    @RolesAllowed({"user"})

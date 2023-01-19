@@ -31,6 +31,11 @@ public class Boat {
     @JoinColumn(name = "habour_id", nullable = false)
     private Harbour harbour;
 
+
+    public Boat() {
+
+    }
+
     public Integer getId() {
         return id;
     }
@@ -47,6 +52,13 @@ public class Boat {
         return image;
     }
 
+    public Boat(String brand, String make, String image, Harbour harbour) {
+        this.brand = brand;
+        this.make = make;
+        this.image = image;
+        this.harbour = harbour;
+    }
+
 
     public Harbour getHarbour() {
         return harbour;
@@ -55,4 +67,6 @@ public class Boat {
     public Set<Owner> getOwners() {
         return owners;
     }
+
+
 }

@@ -24,6 +24,8 @@ public class Harbour {
     @OneToMany(mappedBy = "harbour")
     private Set<Boat> boats = new LinkedHashSet<>();
 
+
+
     public Harbour(Integer id, String name, String address, Integer capacity) {
         this.id = id;
         this.name = name;

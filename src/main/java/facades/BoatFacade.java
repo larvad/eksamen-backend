@@ -6,11 +6,14 @@ import dtos.OwnerDto;
 import entities.Boat;
 import entities.Harbour;
 import entities.Owner;
+import entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import javax.ws.rs.WebApplicationException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class BoatFacade {
 
@@ -76,4 +79,41 @@ public class BoatFacade {
         }
 
     }
+
+
+//    public Owner getOwnerById(String id) {
+//        EntityManager em = emf.createEntityManager();
+//        try {
+//            Owner owner = em.find(Owner.class, Integer.valueOf(id));
+//            if (owner == null) throw new WebApplicationException("Owner could not be found", 404);
+//            return owner;
+//        } finally {
+//            em.close();
+//        }
+//    }
+//    public Harbour getHarbourById(String id) {
+//        EntityManager em = emf.createEntityManager();
+//        try {
+//            Harbour harbour = em.find(Harbour.class, Integer.valueOf(id));
+//            if (harbour == null) throw new WebApplicationException("Harbour could not be found", 404);
+//            return harbour;
+//        } finally {
+//            em.close();
+//        }
+//    }
+//    public BoatDto createBoat(Boat boat, Owner owner) {
+//        EntityManager em = getEntityManager();
+//        try {
+//            em.getTransaction().begin();
+//            owner.addBoat(boat);
+//            boat.addOwner(owner);
+//            em.merge(boat.getHarbour());
+//            em.persist(boat);
+//            em.getTransaction().commit();
+//            return new BoatDto(boat);
+//        } finally {
+//            em.close();
+//        }
+//
+//    }
 }

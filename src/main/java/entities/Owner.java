@@ -38,6 +38,8 @@ public class Owner {
     public Owner() {
     }
 
+    public void addBoat(Boat boat) {boats.add(boat);}
+
     public Set<Boat> getBoats() {
         return boats;
     }

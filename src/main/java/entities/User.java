@@ -33,6 +33,25 @@ public class User implements Serializable {
     @ManyToMany
     private List<Role> roleList = new ArrayList<>();
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "birthYear")
+    private String birthYear;
+
+    @Column(name = "account")
+    private Double account;
+
+    @ManyToMany (mappedBy = "users")
+    private Set<Assignment> assignments = new LinkedHashSet<>();
+
+
 //    @OneToMany (mappedBy = "user")
 //    private Set<Bookmark> bookmarks = new LinkedHashSet<>();
 
@@ -91,9 +110,10 @@ public class User implements Serializable {
         this.roleList = roleList;
     }
 
-    public void addRole(Role userRole) {
-        roleList.add(userRole);
+    public void addRole(Role userRole) {roleList.add(userRole);
     }
+//    public void addAssignment(Assignment assignment) {assignments.add(assignment);}
+
 
 //    public void addBookmark(Bookmark bookmark){
 //        this.bookmarks.add(bookmark);

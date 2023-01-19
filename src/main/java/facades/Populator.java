@@ -5,6 +5,8 @@
  */
 package facades;
 
+import entities.Assignment;
+import entities.DinnerEvent;
 import entities.Role;
 import entities.User;
 import utils.EMF_Creator;
@@ -25,17 +27,33 @@ public class Populator {
 
         EntityManager em = emf.createEntityManager();
         //Create test users
-        User user = new User("user", "As123456");
-        User admin = new User("admin", "JK123456");
-        User both = new User("user_admin", "DQ123456");
+        User user = new User("member", "1234");
+        User admin = new User("admin", "1234");
+        User both = new User("member_admin", "1234");
+
+
+        //Create test events
+        String imageUrl1 = "https://images.squarespace-cdn.com/content/v1/5cf423ac7eb1290001ede256/1611443427041-9YBGUEEB67TMD356NZ1G/Kitchen-Geranium-Menu-Review+%281+of+1%29.jpg?format=1000w";
+        String imageUrl2 = "https://files.guidedanmark.org/files/382/201278_Kadeau_MarieLouiseMunkegaard.jpg";
+
+        DinnerEvent dinnerEvent = new DinnerEvent("Geranium", "5 timer", imageUrl1, "København", "7 retters", 2500);
+        DinnerEvent dinnerEvent2 = new DinnerEvent("Kadeau", "3 timer", imageUrl2, "Bornholm", "5 retters", 1749);
+
+        Assignment assignment = new Assignment("Runners", 2002, "seb@dr.dk");
+
 
         em.getTransaction().begin();
-        Role userRole = new Role("user");
+        Role userRole = new Role("member");
         Role adminRole = new Role("admin");
         user.addRole(userRole);
         admin.addRole(adminRole);
         both.addRole(userRole);
         both.addRole(adminRole);
+        assignment.addDinner(dinnerEvent);
+        assignment.addUser(user);
+        em.persist(assignment);
+        em.persist(dinnerEvent);
+        em.persist(dinnerEvent2);
         em.persist(userRole);
         em.persist(adminRole);
         em.persist(user);

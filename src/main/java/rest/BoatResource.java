@@ -2,18 +2,20 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import dtos.BoatDto;
 import dtos.HarbourDto;
 import dtos.OwnerDto;
+import entities.Boat;
+import entities.Owner;
 import facades.BoatFacade;
 import facades.UserFacade;
 import utils.EMF_Creator;
 
 import javax.annotation.security.DeclareRoles;
 import javax.persistence.EntityManagerFactory;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
@@ -55,6 +57,27 @@ public class BoatResource {
         List<BoatDto> boatDtoList = facade.getAllBoats();
         return GSON.toJson(boatDtoList);
     }
+//    @POST
+//    @Path("createBoat")
+//    @Consumes("application/json")
+//    @Produces("application/json")
+//    public String createBeer(String jdata) {
+//        JsonObject json = JsonParser.parseString(jdata).getAsJsonObject();
+//        String imageUrl = json.get("imageurl").getAsString();
+//        String brand = json.get("brand").getAsString();
+//        String harbourId = json.get("harbourid").getAsString();
+//        String ownerId = json.get("ownerid").getAsString();
+//        String make = "empty";
+//        Owner owner = facade.getOwnerById(ownerId);
+//
+//        Boat boat = new Boat(
+//                brand, make, imageUrl, facade.getHarbourById(harbourId)
+//        );
+//
+//        return GSON.toJson(facade.createBoat(boat, owner));
+//
+//    }
+
 
 
 
