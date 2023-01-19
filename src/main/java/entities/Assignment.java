@@ -10,7 +10,6 @@ import java.util.Set;
 public class Assignment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -22,6 +21,9 @@ public class Assignment {
 
     @Column(name = "contact", nullable = false)
     private String contact;
+
+    @Column(name = "description", nullable = false)
+    private String description;
 
     @ManyToMany
     @JoinTable(name = "link_dinnerEvent_assignment",
@@ -39,10 +41,12 @@ public class Assignment {
     public Assignment() {
     }
 
-    public Assignment(String name, Integer createYear, String contact) {
+
+    public Assignment(String name, Integer createDate, String contact, String description) {
         this.name = name;
-        this.createDate = createYear;
+        this.createDate = createDate;
         this.contact = contact;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -57,10 +61,17 @@ public class Assignment {
         return name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public Set<DinnerEvent> getDinnerEvents() {
         return dinnerEvents;
     }
 
+    public Integer getCreateDate() {
+        return createDate;
+    }
 
 
     public String getContact() {

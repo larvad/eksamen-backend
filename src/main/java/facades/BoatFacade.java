@@ -81,16 +81,16 @@ public class BoatFacade {
     }
 
 
-//    public Owner getOwnerById(String id) {
-//        EntityManager em = emf.createEntityManager();
-//        try {
-//            Owner owner = em.find(Owner.class, Integer.valueOf(id));
-//            if (owner == null) throw new WebApplicationException("Owner could not be found", 404);
-//            return owner;
-//        } finally {
-//            em.close();
-//        }
-//    }
+    public Owner getOwnerById(String id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Owner owner = em.find(Owner.class, Integer.valueOf(id));
+            if (owner == null) throw new WebApplicationException("Owner could not be found", 404);
+            return owner;
+        } finally {
+            em.close();
+        }
+    }
 //    public Harbour getHarbourById(String id) {
 //        EntityManager em = emf.createEntityManager();
 //        try {

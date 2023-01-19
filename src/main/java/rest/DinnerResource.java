@@ -4,12 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import dtos.BoatDto;
-import dtos.DinnerEventDto;
-import dtos.HarbourDto;
-import dtos.OwnerDto;
+import dtos.*;
 import entities.Boat;
 import entities.Owner;
+import entities.User;
 import facades.BoatFacade;
 import facades.DinnerFacade;
 import facades.UserFacade;
@@ -44,12 +42,36 @@ public class DinnerResource {
         return GSON.toJson(dinnerEventDtos);
     }
 
-//    @Path("assignment")
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String getAllAssigment() {
-//        List<DinnerEventDto> dinnerEventDtos = facade.getAllDinners();
-//        return GSON.toJson(dinnerEventDtos);
-//    }
+    @Path("assignment")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllAssigment() {
+        List<AssignmentDto> assignmentDtos = facade.getAllAssignments();
+        return GSON.toJson(assignmentDtos);
+    }
+
+    @Path("user")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUserById(String jdata) {
+        JsonObject json = JsonParser.parseString(jdata).getAsJsonObject();
+        String username = json.get("user").getAsString();
+        UserDto userDto = facade.getUserById(username);
+        return GSON.toJson(userDto);
+    }
+    @Path("addUserToFamily")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String addUserToFamily(String jdata) {
+        JsonObject json = JsonParser.parseString(jdata).getAsJsonObject();
+        String username = json.get("user").getAsString();
+        String id = json.get("id").getAsString();
+        String message = facade.addUserToFamily(username, id);
+        return GSON.toJson(message);
+    }
+
+
 
 }

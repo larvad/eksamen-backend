@@ -46,9 +46,9 @@ public class User implements Serializable {
     private String birthYear;
 
     @Column(name = "account")
-    private Double account;
+    private Integer account;
 
-    @ManyToMany (mappedBy = "users")
+    @ManyToMany(mappedBy = "users")
     private Set<Assignment> assignments = new LinkedHashSet<>();
 
 
@@ -66,6 +66,18 @@ public class User implements Serializable {
         });
         return rolesAsStrings;
     }
+
+    public User(String userName, String userPass, String address, String phone, String email, String birthYear, Integer account)
+    {
+        this.userName = userName;
+        this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.birthYear = birthYear;
+        this.account = account;
+    }
+
 
     public User() {
     }
@@ -85,6 +97,29 @@ public class User implements Serializable {
         this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getBirthYear() {
+        return birthYear;
+    }
+
+    public Integer getAccount() {
+        return account;
+    }
+
+    public Set<Assignment> getAssignments() {
+        return assignments;
+    }
 
     public String getUserName() {
         return userName;

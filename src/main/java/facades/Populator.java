@@ -27,20 +27,21 @@ public class Populator {
 
         EntityManager em = emf.createEntityManager();
         //Create test users
-        User user = new User("member", "1234");
-        User admin = new User("admin", "1234");
-        User both = new User("member_admin", "1234");
+        User user = new User("jon", "1234", "Svaneke", "12345678", "member@test.dk", "1990", 20000);
+        User admin = new User("thomas", "1234", "Gudhjem", "12345678", "admin@test.dk", "1990", 20000);
+        User both = new User("jorg", "1234", "Allinge", "12345678", "member_admin@test.dk", "1990", 20000);
 
 
         //Create test events
         String imageUrl1 = "https://images.squarespace-cdn.com/content/v1/5cf423ac7eb1290001ede256/1611443427041-9YBGUEEB67TMD356NZ1G/Kitchen-Geranium-Menu-Review+%281+of+1%29.jpg?format=1000w";
         String imageUrl2 = "https://files.guidedanmark.org/files/382/201278_Kadeau_MarieLouiseMunkegaard.jpg";
+        String description = "Copenhagen Runners startede oprindeligt som en løbeklub i det indre København. Klubben blev grundlagt af en gruppe entusiastiske løbere, der ønskede at dele deres passion for løb og motion";
 
         DinnerEvent dinnerEvent = new DinnerEvent("Geranium", "5 timer", imageUrl1, "København", "7 retters", 2500);
         DinnerEvent dinnerEvent2 = new DinnerEvent("Kadeau", "3 timer", imageUrl2, "Bornholm", "5 retters", 1749);
 
-        Assignment assignment = new Assignment("Runners", 2002, "seb@dr.dk");
 
+        Assignment assignment = new Assignment("Copenhagen Runners", 2002, "dinner@cphrunners.dk", description);
 
         em.getTransaction().begin();
         Role userRole = new Role("member");

@@ -17,7 +17,7 @@ public class DinnerEventDto implements Serializable {
     private final String location;
     private final String dish;
     private final Integer price;
-    private final Set<AssignmentInnerDto> assignments = new HashSet<>();
+    private final Set<AssignmentInnerDto> assignments = new LinkedHashSet<>();
 
 
     public DinnerEventDto(Integer id, String name, String time, String image, String location, String dish, Integer price) {
