@@ -35,10 +35,12 @@ public class Populator {
         //Create test events
         String imageUrl1 = "https://images.squarespace-cdn.com/content/v1/5cf423ac7eb1290001ede256/1611443427041-9YBGUEEB67TMD356NZ1G/Kitchen-Geranium-Menu-Review+%281+of+1%29.jpg?format=1000w";
         String imageUrl2 = "https://files.guidedanmark.org/files/382/201278_Kadeau_MarieLouiseMunkegaard.jpg";
+        String imageUrl3 = "https://spiseguidenaarhus.dk/wp-content/uploads/2021/05/Restaurant-ATRIUM-3-1280x720.jpg";
         String description = "Copenhagen Runners startede oprindeligt som en løbeklub i det indre København. Klubben blev grundlagt af en gruppe entusiastiske løbere, der ønskede at dele deres passion for løb og motion";
 
         DinnerEvent dinnerEvent = new DinnerEvent("Geranium", "5 timer", imageUrl1, "København", "7 retters", 2500);
         DinnerEvent dinnerEvent2 = new DinnerEvent("Kadeau", "3 timer", imageUrl2, "Bornholm", "5 retters", 1749);
+        DinnerEvent dinnerEvent3 = new DinnerEvent("Atrium", "5 timer", imageUrl3, "Aarhus", "7 retters", 2149);
 
 
         Assignment assignment = new Assignment("Copenhagen Runners", 2002, "dinner@cphrunners.dk", description);
@@ -55,6 +57,7 @@ public class Populator {
         em.persist(assignment);
         em.persist(dinnerEvent);
         em.persist(dinnerEvent2);
+        em.persist(dinnerEvent3);
         em.persist(userRole);
         em.persist(adminRole);
         em.persist(user);
